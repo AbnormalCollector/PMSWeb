@@ -38,6 +38,4 @@ layui.use(['form', 'layer', 'table', 'laytpl'], function() {
                         }
                     })
                 });
-
-
 })

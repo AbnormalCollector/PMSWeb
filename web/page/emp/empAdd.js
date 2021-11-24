@@ -25,13 +25,13 @@ layui.use(['form','layer'],function(){
             if(res.code==0){
                 setTimeout(function(){
                     top.layer.close(index);
-                    top.layer.msg("职位添加成功！");
+                    top.layer.msg("员工添加成功！");
                     layer.closeAll("iframe");
                     //刷新父页面
                     location.href = "empList.html";
                 },1000);
             }else {
-                layer.msg("职位添加失败！")
+                layer.msg("员工添加失败！")
             }
         })
         return false;
