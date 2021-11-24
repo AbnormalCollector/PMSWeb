@@ -1,0 +1,156 @@
+{
+	"contentManagement": [{
+			"title": "用户管理",
+			"icon": "&#xe770;",
+			"href": "",
+			"spread": true,
+			"children": [{
+				"title": "用户查询",
+				"icon": "",
+				"href": "page/user/userList.html",
+				"spread": false
+			},{
+				"title": "添加用户",
+				"icon": "",
+				"href": "page/user/userAdd.html",
+				"spread": false
+			}
+			]
+		}, {
+			"title": "部门管理",
+			"icon": "&#xe770;",
+			"href": "",
+			"spread": true,
+			"children": [{
+					"title": "部门查询",
+					"icon": "",
+					"href": "page/department/dmList.html",
+					"spread": false
+				},
+				{
+					"title": "添加部门",
+					"icon": "",
+					"href": "page/department/dmAdd.html",
+					"spread": false
+				}
+			]
+		}, {
+			"title": "职位管理",
+			"icon": "&#xe770;",
+			"href": "",
+			"spread": true,
+			"children": [{
+					"title": "职位查询",
+					"icon": "",
+					"href": "page/job/jobList.html",
+					"spread": false
+				},
+				{
+					"title": "添加职位",
+					"icon": "",
+					"href": "page/job/jobAdd.html",
+					"spread": false
+				}
+			]
+		}, {
+		"title": "员工管理",
+		"icon": "&#xe770;",
+		"href": "",
+		"spread": true,
+		"children": [{
+			"title": "员工查询",
+			"icon": "",
+			"href": "page/emp/empList.html",
+			"spread": false
+		},
+			{
+				"title": "添加员工",
+				"icon": "",
+				"href": "page/emp/empAdd.html",
+				"spread": false
+			}
+		]
+	}, {
+		"title": "公告管理",
+		"icon": "&#xe770;",
+		"href": "",
+		"spread": true,
+		"children": [{
+			"title": "公告查询",
+			"icon": "",
+			"href": "page/notice/noticeList.html",
+			"spread": false
+		},
+			{
+				"title": "添加公告",
+				"icon": "",
+				"href": "page/notice/noticeAdd.html",
+				"spread": false
+			},
+			{
+				"title": "发送邮件",
+				"icon": "",
+				"href": "",
+				"spread": false
+			},
+			{
+				"title": "发送短信",
+				"icon": "",
+				"href": "",
+				"spread": false
+			}
+		]
+	}, {
+		"title": "下载中心",
+		"icon": "&#xe770;",
+		"href": "",
+		"spread": true,
+		"children": [{
+			"title": "文档查询",
+			"icon": "",
+			"href": "page/file/fileList.html",
+			"spread": false
+		},
+			{
+				"title": "上传文档",
+				"icon": "",
+				"href": "page/file/fileAdd.html",
+				"spread": false
+			}
+		]
+	}, {
+		"title": "签到管理",
+		"icon": "&#xe770;",
+		"href": "",
+		"spread": true,
+		"children": [{
+			"title": "签到查询",
+			"icon": "",
+			"href": "page/sign/signList.html",
+			"spread": false
+		},
+			{
+				"title": "签到图表",
+				"icon": "",
+				"href": "page/sign/signChart.html",
+				"spread": false
+			}
+		]
+	}, {
+		"title": "报表管理",
+		"icon": "&#xe770;",
+		"href": "",
+		"spread": true,
+		"children": [{
+			"title": "报表生成",
+			"icon": "",
+			"href": "page/user/userList.html",
+			"spread": false
+		}
+		]
+	}
+
+
+	]
+
+}

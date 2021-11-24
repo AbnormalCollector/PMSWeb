@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>登录</title>
+<link rel="stylesheet" href="layui/css/layui.css">
+<link rel="stylesheet" href="css/login.css">
+<link id="layuicss-laydate" rel="stylesheet" href="layui/css/modules/laydate/default/laydate%EF%B9%96v=5.3.1.css" media="all">
+<link id="layuicss-layer" rel="stylesheet" href="layui/css/modules/layer/default/layer%EF%B9%96v=3.5.1.css" media="all">
+<link id="layuicss-skincodecss" rel="stylesheet" href="layui/css/modules/code%EF%B9%96v=2.css" media="all">
+</head>
+<body>
+<!-- 粒子背景 -->
+<!--id="particles-js"-->
+<div id="particles-js">
+  <canvas class="particles-js-canvas-el" width="1920" height="1080" style="width: 100%; height: 100%;"></canvas>
+</div>
+<!-- 登录表单 -->
+<form class="layui-form login-form layui-panel" autocomplete="off" id="login">
+  <h1 class="login-title"> <img style="height: 30px" src="img/logo.png" alt="logo"> <span>人事管理系统</span> </h1>
+  <!-- 用户名 -->
+  <div class="layui-form-item"> <i class="layui-icon layui-icon-username"></i>
+    <input type="text" name="username" placeholder="请输入用户名" class="layui-input" lay-verify="required" value="admin" lay-reqtext="请输入用户名">
+  </div>
+  <!-- 密码 -->
+  <div class="layui-form-item"> <i class="layui-icon layui-icon-password"></i>
+    <input type="password" name="password" placeholder="请输入密码" class="layui-input clear" lay-verify="required" lay-reqtext="请输入密码">
+  </div>
+  <!-- 验证码 -->
+  <div class="layui-form-item"> <i class="layui-icon layui-icon-vercode"></i>
+    <input type="text" name="captcha" placeholder="请输入验证码" class="layui-input clear" lay-verify="required" lay-reqtext="请输入验证码">
+    <img id="captcha" src="/user/code.do" alt="验证码生成失败！"> </div>
+  <div class="layui-form-item">
+    <button class="layui-btn layui-btn-normal layui-btn-fluid" id="submit" type="button" lay-submit="" lay-filter="login"> 登录 </button>
+  </div>
+</form>
+<script src="layui/layui.js"></script> 
+<script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.4.1/jquery.js"></script>
+<script src="js/particles.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/stats.js"></script>
+<script>
+            $("#submit").on("click",function (){
+              let data = $("#login").serializeArray();
+              getData(data);
+            })
+            var count_particles, stats, update;
+            stats = new Stats;
+            stats.setMode(0);
+            stats.domElement.style.position = 'absolute';
+            stats.domElement.style.left = '0px';
+            stats.domElement.style.top = '0px';
+            document.body.appendChild(stats.domElement);
+            count_particles = document.querySelector('.js-count-particles');
+            update = function() {
+              stats.begin();
+              stats.end();
+              if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+                count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+              }
+              requestAnimationFrame(update);
+            };
+            requestAnimationFrame(update);
+
+            function getData(data){
+              $.ajax({
+                url:"/user/login.do",
+                data:data,
+                type:"post",
+                dataType:"json",
+                success:function (result){
+                  let code = result.code;
+                  if(code=="0"){
+                    window.localStorage.setItem("sessionUserid",result.data.id);
+                    window.localStorage.setItem("sessionUser",result.data.username);
+                    layer.msg(result.msg,function (){
+                      location.href="/index.html";
+                    });
+                  }else if(code=="1"){
+                    layer.msg(result.msg);
+                    $("#captcha").trigger("click");
+                  }else {
+                    layer.msg(result.msg)
+                    $("#captcha").trigger("click");
+                  }
+                }
+              })
+            }
+
+            //按下回车登录
+            $("body").on("keyup", (e) => {
+                if (e.which === 13) {
+                    $("#submit").trigger("click");
+                }
+            });
+            //点击刷新验证码
+            $("#captcha").on("click", (e) => {
+                e.target.src += "/user/code.do?time=" + new Date().getTime();
+                $(".clear").val("");
+            });
+        </script>
+</body>
+</html>
