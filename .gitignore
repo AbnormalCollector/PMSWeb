@@ -48,7 +48,7 @@ cmake-build-*/
 out/
 
 # upload
-upload/*
+upload/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
