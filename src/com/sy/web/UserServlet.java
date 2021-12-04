@@ -78,11 +78,11 @@ public class UserServlet {
         String pageSize = request.getParameter("limit");
         User user = new User();
         user.setUsername(username);
-        int i = 0;
-        if (status != null) {
-            i = Integer.parseInt(status);
+        Thread thread = Thread.currentThread();
+        System.out.println(thread.getName());
+        if (status != null && !"".equals(status)) {
+            user.setStatus( Integer.parseInt(status));
         }
-        user.setStatus(i);
         Result result = service.findUser(user, pageNow, pageSize);
         PrintWriter writer = response.getWriter();
         writer.write(JSON.toJSONString(result));

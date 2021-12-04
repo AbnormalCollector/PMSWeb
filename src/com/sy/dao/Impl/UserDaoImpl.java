@@ -45,8 +45,7 @@ public class UserDaoImpl implements UserDao {
         }else {
             preparedStatement = connection.prepareStatement("select count(id) from user where username LIKE CONCAT('%',?,'%') and status LIKE CONCAT('%',?,'%')");
             preparedStatement.setString(1,user.getUsername() == null?"":user.getUsername());
-            String status = user.getStatus().toString();
-            preparedStatement.setString(2,status.length() == 0?"":status);
+            preparedStatement.setString(2,user.getStatus() == null?"":user.getStatus().toString());
         }
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet.next()){

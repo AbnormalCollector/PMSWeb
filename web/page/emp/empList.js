@@ -116,7 +116,7 @@ layui.use(['form', 'layer', 'table', 'laytpl'], function() {
         let sex = $(".searchVal-sex").val();
         let cardid = $(".searchVal-card").val();
         let De = $(".searchVal-De").val();
-        if ($(".searchVal").val() != '') {
+        // if ($(".searchVal").val() != '') {
             table.reload("empListTable", {
                 page: {
                     curr: 1 //重新从第 1 页开始
@@ -131,10 +131,10 @@ layui.use(['form', 'layer', 'table', 'laytpl'], function() {
                     De:De
                 }
             })
-        } else {
-            // location.reload()
-            layer.msg("请输入搜索的内容")
-        }
+        // } else {
+        //     // location.reload()
+        //     layer.msg("请输入搜索的内容")
+        // }
     });
 
     //批量删除

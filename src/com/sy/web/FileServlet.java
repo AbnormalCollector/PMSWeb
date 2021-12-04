@@ -63,12 +63,12 @@ public class FileServlet {
                     String filName = fileItem.getName();
                     //利用UUID生成伪随机字符串，作为文件名避免重复
                     uuid = UUID.randomUUID().toString();
-//                    System.out.println(uuid);
+                    System.out.println(uuid);
                     //获取文件后缀名
                     suffix = filName.substring(filName.lastIndexOf("."));
                     file.setFileName(uuid + suffix);
                     //获取文件上传目录路径，在项目部署路径下的upload目录里。若想让浏览器不能直接访问到图片，可以放在WEB-INF下
-//                    String uploadPath = request.getSession().getServletContext().getRealPath("/upload");
+                    String uploadPath = request.getSession().getServletContext().getRealPath("/upload");
                     String path = "C:\\Users\\Administrator\\IdeaProjects\\PMSWeb\\web\\upload";
 //                    System.out.println();
                     File files = new File(path);
@@ -88,6 +88,7 @@ public class FileServlet {
                     } finally {
                         IOUtils.closeQuietly(fout);
                     }*/
+                    fileItem.write(new File(uploadPath, uuid + suffix));
                     fileItem.write(new File(path, uuid + suffix));
 
                 } else {

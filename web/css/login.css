@@ -4,12 +4,10 @@ body {
 }
 
 body {
-    background-color: #002a56;
 	background-image: url("/img/pexels-maksim-goncharenok-5611958.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
-
 .login-form {
     background-color: #fff;
     width: 320px;

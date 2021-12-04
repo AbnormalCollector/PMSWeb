@@ -23,6 +23,9 @@ public class UserServiceImpl implements UserService {
             if(user==null){
                 result.setCode(Constants.CODE_ERROR);
                 result.setMsg("用户名或密码错误！");
+            }else if(user.getStatus() == 1){
+                result.setCode(Constants.CODE_STATUS);
+                result.setMsg("该用户未被审核！");
             }else {
                 HttpSession session = RequestContextUtil.getRequest().getSession();
                 session.setAttribute(Constants.USER_SESSION_ID,user);

@@ -1,9 +1,10 @@
-layui.use(['form', 'layer', 'table', 'laytpl'], function() {
+layui.use(['form', 'layer', 'table', 'laytpl','dropdown'], function() {
 	var form = layui.form,
 		layer = parent.layer === undefined ? layui.layer : top.layer,
 		$ = layui.jquery,
 		laytpl = layui.laytpl,
-		table = layui.table;
+		table = layui.table,
+		dropdown = layui.dropdown;
 
 		//用户列表
 		var tableIns = table.render({
@@ -67,7 +68,7 @@ layui.use(['form', 'layer', 'table', 'laytpl'], function() {
 	$(".search_btn").on("click", function() {
 		let username = $(".searchVal-username").val();
 		let status = $(".searchVal-status").val()
-		if ($(".searchVal").val() != '') {
+		// if ($(".searchVal").val() != '') {
 			table.reload("userListTable", {
 				page: {
 					curr: 1 //重新从第 1 页开始
@@ -78,12 +79,11 @@ layui.use(['form', 'layer', 'table', 'laytpl'], function() {
 					status:status
 				}
 			})
-		} else {
-			// location.reload()
-			layer.msg("请输入搜索的内容")
-		}
+		// } else {
+		// 	// location.reload()
+		// 	layer.msg("请输入搜索的内容")
+		// }
 	});
-
 	//批量删除
 	$(".delAll_btn").click(function() {
 		var checkStatus = table.checkStatus('userListTable'),
